@@ -1,9 +1,9 @@
 ---
 status_code: '201'
-url: https://funktion-admin.3scale.net/admin/api/services.json
+url: https://YOURDOAMIN-admin.3scale.net/admin/api/services.json
 verb: POST
-access_token: cfc88ea11dc37a5197ab613790fe12f1ab1042f92ed3da7a973f2ff5a2495013
-name: ferguson17
+access_token: YOUR ACCESS TOKEN
+name: SERVICE17
 deployment_option: hosted
 backend_version: 1
-system_name: ferguson17
+system_name: SERVICE17
