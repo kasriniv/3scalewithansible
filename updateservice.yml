@@ -1,0 +1,59 @@
+---
+- name: update a 3scale service
+  hosts: ec2-52-14-196-66.us-east-2.compute.amazonaws.com
+  tasks:
+  - include_vars: ./updateservicedetails.yml
+  - name: update backend production and staging urls
+    uri:
+      url: "{{url}}/{{service_id}}/proxy.xml"
+      method: "{{verb}}"
+      body: "access_token={{access_token}}&name={{name}}&api_backend={{api_backend}}&endpoint={{endpoint}}&sandbox_endpoint={{sandbox}}"
+      return_content: yes
+      status_code: "{{status_code}}"
+  
+  - name: get default metric id ..change later to create a new metric and new method
+    uri:
+      url: "{{url}}/{{service_id}}/metrics.json"
+      method: GET
+      body: "access_token={{access_token}}"
+      return_content: yes
+      status_code: 200
+    register: metricid
+
+  - debug:
+      msg: "{{metricid.json.metrics[0].metric.id}}"
+     
+  - name: create a mapping rule
+    uri:
+      url: "{{url}}/{{service_id}}/proxy/mapping_rules.xml"
+      method: POST
+      body: "access_token={{access_token}}&http_method={{http_method}}&pattern={{pattern}}&delta={{delta}}&metric_id={{metricid.json.metrics[0].metric.id}}"
+      return_content: yes
+      status_code: 201
+  - name: create an application plan
+    uri:
+      url: "{{url}}/{{service_id}}/application_plans.json"
+      method: POST
+      body: "access_token={{access_token}}&name={{applicationplanname}}n&system_name={{applicationplansystemname}}"
+      return_content: yes
+      status_code: 201
+      #body_format: json
+    register: result
+  - name: Find the project id
+    set_fact:
+      example_plan_id: "{{result.json.application_plan.id }}"
+  
+  - name: create a test application 
+    uri:
+      url: "{{basedomain}}/admin/api/accounts/{{accountid}}/applications.xml"
+      method: POST
+      body: "access_token={{access_token}}&plan_id={{example_plan_id}}&name={{applicationname}}&description={{applicationdescription}}+cd&user_key={{user_key}}"
+      return_content: yes
+      status_code: 201
+
+  - name: quick test 
+    uri:
+      url: "{{sandbox}}/?user_key={{user_key}}"
+      method: GET
+      return_content: yes
+      status_code: 200

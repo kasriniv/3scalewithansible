@@ -1,0 +1,26 @@
+---
+access_token: cfc88ea11dc37a5197ab613790fe12f1ab1042f92ed3da7a973f2ff5a2495013
+name: ferguson17
+deployment_option: hosted
+backend_version: 1
+system_name: ferguson17
+status_code: '200'
+basedomain: https://funktion-admin.3scale.net
+url: https://funktion-admin.3scale.net/admin/api/services
+verb: PUT
+access_token: cfc88ea11dc37a5197ab613790fe12f1ab1042f92ed3da7a973f2ff5a2495013
+api_backend: https://echo-api.3scale.net:443
+endpoint: https://ferguson17-2445581953984.production.gw.apicast.io:443
+sandbox: https://ferguson17-2445581953984.staging.gw.apicast.io:443
+deployment_option: hosted
+backend_version: 1
+service_id: 2555417756894
+http_method: GET 
+pattern: /mymethod629
+delta: 1
+applicationplanname: goldplan629
+applicationplansystemname: goldplan629
+accountid: 2445582150784
+applicationname: cicdapp629
+applicationdescription: cicdapp629
+user_key: welcome629
