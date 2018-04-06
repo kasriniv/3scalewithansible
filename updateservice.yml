@@ -1,6 +1,6 @@
 ---
 - name: update a 3scale service
-  hosts: ec2-52-14-196-66.us-east-2.compute.amazonaws.com
+  hosts: YOUR HOST
   tasks:
   - include_vars: ./updateservicedetails.yml
   - name: update backend production and staging urls
