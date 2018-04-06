@@ -1,4 +1,4 @@
-# CI-CD for 3scale artifacts using Ansible
+# Creating 3scale artifacts in a CI-CD pipeline using Ansible
 
 This repo is to provide ansible scripts to create all 3scale artifacts needed to provision a service in 3scale.
 They can be invoked as-is or a via a jenkins-ansible plugin.
