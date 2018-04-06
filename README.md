@@ -24,7 +24,7 @@ Update service uses the updateservicedetails.yml to do the following :
 How to run
 ---------
 To run ansible playbook to create a service
-Step 0: set the properties you want in newservicedetails.yml 
-Step 1: ansible-playbook addnewservice.yml
-Step 2: get service id from the debug output of Step 1 and edit updateservicedetails.yml
-Step 3: ansible-playbook updateservice.yml
+- Step 0: set the properties you want in newservicedetails.yml 
+- Step 1: ansible-playbook addnewservice.yml
+- Step 2: get service id from the debug output of Step 1 and edit updateservicedetails.yml
+- Step 3: ansible-playbook updateservice.yml
