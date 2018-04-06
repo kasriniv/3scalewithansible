@@ -1,6 +1,6 @@
 ---
 - name: Hi K
-  hosts: ec2-52-14-196-66.us-east-2.compute.amazonaws.com
+  hosts: myhost
   tasks:
   - include_vars: ./newservicedetails.yml
   - name: create new service
